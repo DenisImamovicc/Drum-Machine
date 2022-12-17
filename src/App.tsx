@@ -2,7 +2,17 @@ import { useState, useRef, useEffect } from 'react'
 import './App.css'
 
 function App() {
-  const drumSet = [{}]
+  const presetDrumSet = [
+    { name: "Heater 1", id: "Q", src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3" },
+    { name: "Heater 2", id: "W", src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3" },
+    { name: "Heater 3", id: "E", src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3" },
+    { name: "Heater 4", id: "A", src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3" },
+    { name: "Clap", id: "S", src: "https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3" },
+    { name: "Open HH", id: "D", src: "https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3" },
+    { name: "Kick_n_Hat", id: "Z", src: "https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3" },
+    { name: "Kick", id: "X", src: "https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3" },
+    { name: "Closed-HH", id: "C", src: "https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3" },
+  ]
   const [displayInstrument, setdisplayInstrument] = useState("None")
   function handlePlayMouseClick(e) {
     const button = document.getElementById(`${e.target.id}`)
@@ -19,54 +29,62 @@ function App() {
 
   }
 
-// useEffect(() => {
-//   // const Display = document.getElementById('display')
+  // useEffect(() => {
+  //   // const Display = document.getElementById('display')
 
-// }, [])
+  // }, [])
+
+  function name(params: type) {
+
+  }
 
 
-const display = document.getElementById(`display`)
-document.addEventListener("keypress",(e:any)=>{
-  const button = document.getElementById(`${e.target.id}`)
+  const display = document.getElementById(`display`)
+  document.addEventListener("keypress", (e: any) => {
+    const button = document.getElementById(`${e.target.id}`)
+    const val = e.key.toLowerCase()
 
 
-    if (e.key.toUpperCase()==="Q") {
+
+
+
+    if (val === "q") {
       console.log(e);
-      button?.focus();
-      return e.target?.lastChild.play();
+      setdisplayInstrument(e.target.id)
+      return e.target.childNodes[1].childNodes[0].childNodes[0].childNodes[1].firstElementChild.play();
 
     }
-    if (e.key.toUpperCase()==="W") {
+    if (val === "w") {
       console.log(e);
-      return e.target?.lastChild.play();
+      return e.target.childNodes[1].childNodes[0].childNodes[0].childNodes[2].firstElementChild.play();
 
     }
-    if (e.key.toUpperCase()==="E") {
-      return e.target?.lastChild.play();
+    if (val === "e") {
+      return e.target.childNodes[1].childNodes[0].childNodes[0].childNodes[3].firstElementChild.play();
 
     }
-    if (e.key.toUpperCase()==="A") {
-      return e.target?.lastChild.play();
+    if (val === "a") {
+      return e.target.childNodes[1].childNodes[0].childNodes[0].childNodes[4].firstElementChild.play();
 
     }
-    if (e.key.toUpperCase()==="S") {
-      return e.target?.lastChild.play();
+    if (val === "s") {
+      return e.target.childNodes[1].childNodes[0].childNodes[0].childNodes[5].firstElementChild.play();
 
     }
-    if (e.key.toUpperCase()==="D") {
-      return e.target?.lastChild.play();
+    if (val === "d") {
+      return e.target.childNodes[1].childNodes[0].childNodes[0].childNodes[6].firstElementChild.play();
 
     }
-    if (e.key.toUpperCase()==="Z") {
-      return e.target?.lastChild.play();
+    if (val === "z") {
+      return e.target.childNodes[1].childNodes[0].childNodes[0].childNodes[7].firstElementChild.play();
 
     }
-    if (e.key.toUpperCase()==="X") {
-      return e.target?.lastChild.play();
+    if (val === "x") {
+      return e.target.childNodes[1].childNodes[0].childNodes[0].childNodes[8].firstElementChild.play();
 
     }
-    if (e.key.toUpperCase()==="C") {
-      return e.target?.lastChild.play();
+    if (val === "c") {
+      return e.target.childNodes[1].childNodes[0].childNodes[0].childNodes[9].firstElementChild.play();
 
     }
     return null;
@@ -76,42 +94,12 @@ document.addEventListener("keypress",(e:any)=>{
   return (
     <div id='drum-machine'>
       <div id='display'>{displayInstrument}
-        <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id='Heater 1' >Q
-          <audio className='clip' id='Q' src="src/assets/Cev_H2.mp3" >
-          </audio>
-        </button>
-        <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id='Heater 2'>W
-          <audio className='clip' id='W' src="src/assets/Dsc_Oh.mp3">
-          </audio>
-        </button>
-        <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id='Heater 3'>E
-          <audio className='clip' id='E' src="src/assets/Heater-1.mp3">
-          </audio>
-        </button>
-        <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id='Heater 4'>A
-          <audio className='clip' id='A' src="src/assets/Heater-2.mp3">
-          </audio>
-        </button>
-        <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id='Clap'>S
-          <audio className='clip' id='S' src="src/assets/Heater-3.mp3">
-          </audio>
-        </button>
-        <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id='Open-HH'>D
-          <audio className='clip' id='D' src="src/assets/Heater-4_1.mp3">
-          </audio>
-        </button>
-        <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id="Kick-n'-Hat">Z
-          <audio className='clip' id='Z' src="src/assets/Heater-6.mp3">
-          </audio>
-        </button>
-        <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id='Kick'>X
-          <audio className='clip' id='X' src="src/assets/Kick_n_Hat.mp3">
-          </audio>
-        </button>
-        <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id='Closed-HH'>C
-          <audio className='clip' id='C' src="src/assets/RP4_KICK_1.mp3">
-          </audio>
-        </button>
+        {presetDrumSet.map((Instrument) => {
+          return <button tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id={`${Instrument.name}`}>{Instrument.id}
+            <audio className='clip' id={`${Instrument.id}`} src={`${Instrument.src}`}>
+            </audio>
+          </button>
+        })}
       </div>
     </div>
   )
