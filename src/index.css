@@ -1,5 +1,5 @@
 #displayInstrument{
-
+margin-top: 1rem;
 }
 
 #display{
@@ -12,4 +12,24 @@ align-items: flex-start;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2%;
+
+}
+
+.drum-pad{
+    color: black;
+    background-color: gray;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drum-pad:hover{
+    color: black;
+    background-color: rgb(58, 57, 57); 
+}
+
+.drum-pad:active{
+    color: rgb(255, 255, 255);
+    background-color: rgb(58, 57, 57); 
 }

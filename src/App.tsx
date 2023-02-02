@@ -17,8 +17,10 @@ function App() {
   function handlePlayMouseClick(e: any) {
     const button = document.getElementById(`${e.target.id}`)
 
+    
+
     // console.log(e)
-    const audio = e.target.childNodes[1]
+    const audio:any = e.target.childNodes[1]
     audio.currentTime = 0;
     button?.blur();
     setdisplayInstrument(e.target.id)
@@ -34,16 +36,17 @@ function App() {
     // console.log(button,pressedkey);
 
     if (presetDrumSet.find(key=> key.id === pressedkey)) {
-      const audio = document.getElementById(`${pressedkey}`)
+      const audio:any = document.getElementById(`${pressedkey}`)
       audio.currentTime = 0;
-
-      const instrumentName = findInstrumentNameByID(pressedkey)?.name
+      const instrumentName:any = findInstrumentNameByID(pressedkey)?.name
       setdisplayInstrument(instrumentName)
       //  console.log(audio);
       return audio.play()
     }
     return null
   })
+
+
 
   return (
     <div id='drum-machine'>
