@@ -23,18 +23,26 @@ function App() {
     setdisplayInstrument(e.target.id)
     return audio.play()
   }
+  
+
+  function findInstrumentNameByID(id:string) {
+    return presetDrumSet.find(instrument=> instrument.id === id)
+  }
+
+  console.log(findInstrumentNameByID("X"));
+  
 
   document.addEventListener("keypress", (e: any) => {
+    const pressedkey = e.key.toUpperCase()
+    // console.log(button,pressedkey);
 
-    const val = e.key.toUpperCase()
-    // console.log(button,val);
-
-    if (presetDrumSet.find(key=> key.id === val)) {
-      const audio = document.getElementById(`${val}`)
-      console.log("y",audio);
+    if (presetDrumSet.find(key=> key.id === pressedkey)) {
+      const audio = document.getElementById(`${pressedkey}`)
+      const instrumentName = findInstrumentNameByID(pressedkey)?.name
+      setdisplayInstrument(instrumentName)
+       console.log(audio);
       return audio.play()
     }
-    
     return null
   })
 
@@ -42,7 +50,7 @@ function App() {
   return (
     <div id='drum-machine'>
       <div id='display'>
-        <div>{displayInstrument}</div>
+        <div className='displayInstrument'>{displayInstrument}</div>
         {presetDrumSet.map((Instrument) => {
           return <div tabIndex={-1} className='drum-pad' onClick={handlePlayMouseClick} id={`${Instrument.name}`}>{Instrument.id}
             <audio className='clip' id={`${Instrument.id}`} src={`${Instrument.src}`}></audio>
